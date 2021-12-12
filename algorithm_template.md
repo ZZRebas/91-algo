@@ -1,6 +1,6 @@
 # 01.数组
 
-https://leetcode-cn.com/problems/add-to-array-form-of-integer/
+链接：https://leetcode-cn.com/problems/
 
 - [01.数组](#01数组)
   - [题目描述](#题目描述)
