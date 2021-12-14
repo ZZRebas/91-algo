@@ -35,6 +35,7 @@
 遍历数组A，取出每个元素转换为字符串，再拼在一起，然后转为int整形，再与整数K相加，得出的结果再转为字符串，再遍历每一个元素输出到新的数组中。
 '''
 
+#方法1
 def fun(A,K):
     a=''.join(str(x) for x in A)
     b=int(a)+K
@@ -49,3 +50,29 @@ fun(A,K)    #[1, 2, 3, 4]
 fun(A = [2,7,4], K = 181)   #[4, 5, 5]
 fun(A = [2,1,5], K = 806)   #[1, 0, 2, 1]
 fun(A = [9,9,9,9,9,9,9,9,9,9], K = 1)   #[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+方法2
+class Solution():
+    def AddToArrayFrom(self,A:list,K:int) -> list:  #指定函数输入参数类型及返回类型，几乎没用
+        carry=0
+        for i in range(len(A))[::-1]:
+            variable=A[i]
+            A[i]=(A[i]+K%10+carry)%10
+            carry=(variable+K%10+carry)//10     #注意，这里不能直接用A[i],因为A[i]已经在上一步中改变，所以用用variable保留每次循环开始的A[i]
+            # A[i], carry = (A[i]+K%10+carry)%10, (A[i]+K%10+carry)//10   #或者上面2行代码写在一行也可以，就可以省略中间保留的variable=A[i]
+            K=K//10
+
+        #如果加完后还有进位，或者K的位数比A多，如A=[2,3],K=77; A=[2,3],K=1377
+        B=[]
+        if carry !=0 or K !=0:
+            carry=carry+K   #让多的进位和剩余的K先加起来，统一处理
+            while carry:
+                B=[carry%10]+B
+                carry//=10
+        return B+A
+
+A = [2,7,4]
+K = 181
+res=Solution()
+print(res.AddToArrayFrom(A,K))  #[4, 5, 5]
+
