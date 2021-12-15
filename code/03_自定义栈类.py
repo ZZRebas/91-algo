@@ -69,6 +69,9 @@ class CustomStack():
                 self.customstack[i]+=val
         else:
             self.customstack=[self.customstack[i]+val for i in range(len(self.customstack))]
+        
+        # for i in range(0,min(k,len(self.customstack))):
+        #     self.customstack[i]+=val
 
 
 def obj_API(A,B):
