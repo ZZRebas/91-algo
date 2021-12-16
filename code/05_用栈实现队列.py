@@ -31,7 +31,7 @@ class MyQueue():
         self.queue.append(x)    #尾部插入
         print('queue:',self.queue)
 
-    def stack_exchange(self,x:list,y:list): #输入栈与输出栈交换
+    def __stack_exchange(self,x:list,y:list): #输入栈与输出栈交换
         while x != []:    #循环遍历x的栈顶，依次取出存入y栈中
             stack_top=x.pop()      #x删除栈顶，并返回删除的值
             y.append(stack_top)    #y插入x删除的栈顶
@@ -46,18 +46,18 @@ class MyQueue():
         if self.empty() == True:
             print(f'空栈，{self.__class__.__name__}.peek操作无效')
         else:
-            self.stack_exchange(self.queue,self.out_queue)  #交换栈
+            self.__stack_exchange(self.queue,self.out_queue)  #交换栈
             print(self.out_queue[-1])   #返回栈顶
-            self.stack_exchange(self.out_queue,self.queue)  #再交换回去，还原
+            self.__stack_exchange(self.out_queue,self.queue)  #再交换回去，还原
             # print('queue:',self.queue)
 
     def pop(self):
         if self.empty() == True:
             print(f'空栈，{self.__class__.__name__}.pop操作无效')
         else:
-            self.stack_exchange(self.queue,self.out_queue)  #交换栈
+            self.__stack_exchange(self.queue,self.out_queue)  #交换栈
             print(self.out_queue.pop())    #删除输出栈的栈顶
-            self.stack_exchange(self.out_queue,self.queue)  #再交换回去，还原，此时已删除输入栈的栈顶
+            self.__stack_exchange(self.out_queue,self.queue)  #再交换回去，还原，此时已删除输入栈的栈顶
             # print('queue:',self.queue)
 
 
