@@ -44,6 +44,8 @@ def fun(startTime,finishTime):
     m_s=int(startTime.split(':')[1])
     h_e=int(finishTime.split(':')[0])
     m_e=int(finishTime.split(':')[1])
+    sh, sm = map(int, startTime.split(":"))
+    eh, em = map(int, finishTime.split(":"))
 
     if 0<m_s<15 : m_s=15
     elif 15<m_s<30 : m_s=30
