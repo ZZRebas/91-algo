@@ -21,6 +21,8 @@
 解释：机器人向左移动两次。它最终位于原点的左侧，距原点有两次 “移动” 的距离。我们返回 false，因为它在移动结束时没有返回原点。
 ```
 '''
+import sys
+
 
 def fun(nums):
     x=0
@@ -35,3 +37,8 @@ def fun(nums):
 
 nums="LLRRUD"
 print(fun(nums))    #True
+import numpy as np
+a=np.array([1])
+print(a)
+for i in range(len(sys.path)):
+    print(sys.path[i])
